@@ -1,20 +1,23 @@
 package exovoiture;
 
-public class Voiture{
+public class Voiture {
+    // Attributs
     public String marque;
     public String modele;
     public String couleur;
 
-     void demarrer(){
-        System.out.println("La voiture démarre");
+    public Voiture() {}
 
+    // Méthodes
+    public void demarrer() {
+        System.out.println("La voiture démarre");
     }
-    
-     void accelerer(){
-        System.out.println("La voiture accelere");
+	
+	public void accelerer() {
+        System.out.println("La voiture accelère");
     }
-    
-    void freiner(){
+
+    public void freiner() {
         System.out.println("La voiture freine");
     }
 }
