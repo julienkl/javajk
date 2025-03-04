@@ -33,7 +33,6 @@ public class GestionUtilisateur {
 
     public void addUtilisateurs(Utilisateur utilisateur) {
         try {
-
             if (utilisateur.isValidNom()) {
                 String sqlInsert = "INSERT INTO utilisateurs (nom, email) VALUES (?, ?)";
                 PreparedStatement pstmtInsert = this.link.connexion.prepareStatement(sqlInsert);
@@ -49,6 +48,51 @@ public class GestionUtilisateur {
             }
         } catch (SQLException e) {
             System.out.println("Erreur de connexion : " + e.getMessage());
+        }
+    }
+
+    public void supprimerUtilisateur(int id) {
+        try {
+            String sqlDelete = "DELETE FROM utilisateurs WHERE id = ?";
+            PreparedStatement pstmtDelete = this.link.connexion.prepareStatement(sqlDelete);
+            pstmtDelete.setInt(1, id);
+            pstmtDelete.executeUpdate();
+            
+            System.out.println("Utilisateur supprimé avec succès!");
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la suppression : " + e.getMessage());
+        }
+    }
+
+    public void modifierUtilisateur(int id, String newNom, String newEmail) {
+        try {
+            String sqlUpdate = "UPDATE utilisateurs SET nom = ?, email = ? WHERE id = ?";
+            PreparedStatement pstmtUpdate = this.link.connexion.prepareStatement(sqlUpdate);
+            pstmtUpdate.setString(1, newNom);
+            pstmtUpdate.setString(2, newEmail);
+            pstmtUpdate.setInt(3, id);
+            pstmtUpdate.executeUpdate();
+            
+            System.out.println("Utilisateur modifié avec succès!");
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la modification : " + e.getMessage());
+        }
+    }
+
+    public void rechercherUtilisateur(String nom, String email) {
+        try {
+            String sqlSearch = "SELECT id, nom, email FROM utilisateurs WHERE nom = ? AND email = ?";
+            PreparedStatement pstmtSearch = this.link.connexion.prepareStatement(sqlSearch);
+            pstmtSearch.setString(1, nom);
+            pstmtSearch.setString(2, email);
+            ResultSet rs = pstmtSearch.executeQuery();
+            
+            System.out.println("Résultats de la recherche :");
+            while (rs.next()) {
+                System.out.println("ID : " + rs.getInt("id") + ", Nom : " + rs.getString("nom") + ", Email : " + rs.getString("email"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la recherche : " + e.getMessage());
         }
     }
 }
