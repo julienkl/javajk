@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class GestionUtilisateur {
     ArrayList<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
@@ -99,4 +101,17 @@ public class GestionUtilisateur {
             System.out.println("Erreur lors de la recherche : " + e.getMessage());
         }
     }
+
+        public void genererCSVUtilisateur(String filePath) {
+            ArrayList<Utilisateur> utilisateurs = listUtilisateurs();
+            try (FileWriter writer = new FileWriter(filePath)) {
+                writer.append("ID,Nom,Email\n");
+                for (Utilisateur user : utilisateurs) {
+                    writer.append(user.getId() + "," + user.getNom() + "," + user.getEmail() + "\n");
+                }
+                System.out.println("Export CSV réussi: " + filePath);
+            } catch (IOException e) {
+                System.out.println("Erreur lors de l'export CSV: " + e.getMessage());
+            }
+        }
 }

@@ -25,6 +25,7 @@ public class App
             System.out.println("3 - Supprimer un utilisateur par ID");
             System.out.println("4 - Modifier un utilisateur par ID");
             System.out.println("5 - Rechercher un utilisateur par Nom et Email");
+            System.out.println("6 - Générer un fichier CSV des utilisateurs");
             System.out.println("0 - Quitter");
             choice = sc.nextInt();
             
@@ -86,6 +87,12 @@ public class App
                     gu.rechercherUtilisateur(rechercheNom, rechercheEmail);
                     System.out.println("---------------------");
                     break;
+                
+                case 6:
+                gu.genererCSVUtilisateur("utilisateurs.csv");
+                System.out.println("Fichier CSV généré avec succès!");
+                System.out.println("---------------------");
+                break;
                 
                 case 0:
                     System.out.println("Fermeture de l'application...");
