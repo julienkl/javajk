@@ -14,7 +14,8 @@ public class GestionUtilisateur {
         this.link = plink;
     }
 
-    public void listUtilisateurs () {
+    public ArrayList<Utilisateur> listUtilisateurs() {
+        ArrayList<Utilisateur> listeUtilisateurs = new ArrayList<>();
         try {
             Statement stmt = this.link.connexion.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT id, nom, email FROM utilisateurs");
@@ -24,11 +25,14 @@ public class GestionUtilisateur {
                 String nom = rs.getString("nom");
                 String email = rs.getString("email");
 
+                Utilisateur utilisateur = new Utilisateur(id, nom, email);
+                listeUtilisateurs.add(utilisateur);
                 System.out.println("ID : " + id + ", Nom : " + nom + ", Email : " + email);
             }
         } catch (SQLException e) {
             System.out.println("Erreur de connexion : " + e.getMessage());
         }
+        return listeUtilisateurs;
     }
 
     public void addUtilisateurs(Utilisateur utilisateur) {

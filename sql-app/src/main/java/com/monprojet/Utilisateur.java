@@ -5,44 +5,30 @@ public class Utilisateur {
     private String nom;
     private String email;
 
+    public Utilisateur(int id, String nom, String email) {
+        this.id = id;
+        this.nom = nom;
+        this.email = email;
+    }
+
     public Utilisateur(String nom, String email) {
         this.nom = nom;
         this.email = email;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public int getId() {
+        return id;
     }
 
     public String getNom() {
-        return this.nom;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+        return nom;
     }
 
     public String getEmail() {
-        return this.email;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return this.id;
+        return email;
     }
 
     public boolean isValidNom() {
-        if (!this.nom.equals("")) {
-            return true;
-        }
-
-        return false;
-    }
-
-    public void __String() {
-        System.out.println("Nom: " + this.nom + " " + this.email);
+        return this.nom != null && !this.nom.trim().isEmpty();
     }
 }
