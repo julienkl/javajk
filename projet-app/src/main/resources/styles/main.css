@@ -1,0 +1,48 @@
+.root {
+    -fx-background-color: linear-gradient(to bottom, #000000, #333333); /* Dégradé de noir */
+}
+
+.button {
+    -fx-background-color: #ff99cc; /* Rose doux */
+    -fx-text-fill: blue; /* Texte bleu */
+    -fx-font-weight: bold;
+    -fx-font-family: "Arial"; /* Changer la police ici */
+    -fx-border-color: blue;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 5px 15px; /* Boutons moins grands */
+    -fx-font-size: 12px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 255, 0.5), 3, 0, 1, 1);
+    -fx-alignment: center; /* Centrage */
+}
+
+.button:hover {
+    -fx-background-color: #ff66b2; /* Rose plus vif */
+    -fx-text-fill: white; /* Texte blanc */
+}
+
+.label {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.table-view {
+    -fx-background-color: black;
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+}
+
+.table-view .column-header {
+    -fx-background-color: #ff99cc;
+    -fx-text-fill: blue;
+    -fx-font-weight: bold;
+}
+
+
+.vbox {
+    -fx-alignment: center;
+    -fx-spacing: 10px;
+    -fx-padding: 20px;
+}
